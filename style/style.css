@@ -1,0 +1,76 @@
+*{
+    /* background-color: rgb(222, 197, 247); */
+}
+
+/* Div class Container */
+.container{
+    border: 1px solid black;
+    height: 100vh;
+}
+
+/* ID Navbar */
+#navbar{
+    border: 1px solid black;
+    height: 60px;
+    display: flex;
+}
+
+/* Search Box */
+.searchBox{
+    border: 1px solid tomato;
+    width: 50%;
+}
+
+.searchBox input[type="text"]{
+    width: 80%;
+    margin: 5px auto;
+    padding: 10px 0px;
+    font-size: 20px;
+}
+
+.searchBox #searchBtn{
+    padding: 12px 8px;
+    font-size: 16px;
+}
+
+/* Page Section */
+.pageSection{
+    border: 1px solid brown;
+    width: 50%;
+}
+
+.pageSection ul{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.pageSection ul li a{
+    text-decoration: none;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+
+/* Food Container */
+.food_container{
+    border: 1px solid blue;
+    width: 45%;
+    margin: 30px auto;
+    height: 400px;
+    display: flex;
+    padding: 80px 0px;
+    box-sizing: border-box;
+}
+
+/* Food image container */
+.food_image--container{
+    border: 1px solid brown;
+    width: 40%;
+}
+
+/* Food details container */
+.food_details--container{
+    border: 1px solid tomato;
+    width: 60%;
+}
