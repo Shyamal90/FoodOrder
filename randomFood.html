@@ -22,6 +22,15 @@
         <!-- Display Selected Food Details -->
         <div class="fooditem_container">
            
+            <!-- food image -->
+            <div class="fooditem_container-image">
+
+            </div>
+
+            <!-- food details -->
+            <div class="fooditem_containe-details">
+
+            </div>
         </div>
 
     </div>
@@ -30,3 +39,31 @@
 
 <!-- JavaScript -->
 <script src="./script/index.js"></script>
+<script type="module">
+    import getData from "./script/random.js";
+
+    let data = await getData('https://www.themealdb.com/api/json/v1/1/random.php');
+    console.log(data.meals);
+
+    let foodData = data.meals;
+
+    foodData.map((food)=>{
+        let img = document.createElement("img");
+        img.src = food.strMealThumb;
+
+        let price = Math.random() * 100;
+        price =  price.toFixed(2);
+        let p = document.createElement("h4");
+        p.innerHTML = "Rs. " + price;
+
+        let name = document.createElement("h3");
+        name.innerHTML = food.strMeal;
+
+        let category = document.createElement("p");
+        category.innerHTML = "Catagory: " +  food.strCategory;
+
+        document.querySelector(".fooditem_container-image").append(img);
+        document.querySelector(".fooditem_containe-details").append(name,p,category);
+    })
+
+</script>

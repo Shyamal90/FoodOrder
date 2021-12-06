@@ -20,7 +20,7 @@
         </div>
 
         <!-- Display Selected Food Details -->
-        <div class="food_container">
+        <div class="latestFood_container">
             
         </div>
 
@@ -30,3 +30,66 @@
 
 <!-- JavaScript -->
 <script src="./script/index.js"></script>
+
+<script type="module">
+    import getData from "./script/latest.js";
+
+    
+
+    let response = await getData("https://www.themealdb.com/api/json/v1/1/search.php?f=d");
+    let data     = response.meals;
+
+    console.log(data);
+    // localStorage.removeItem("foodArr");
+    
+    let Arr = JSON.parse(localStorage.getItem("foodArr")) || [];
+    console.log(Arr);
+    data.map((food)=>{
+        let price = (Math.random()*999).toFixed(2);
+
+        let foodObj = {
+            // name:food.strCategory strMeal strMealThumb strYoutube
+            name : food.strMeal,
+            image: food.strMealThumb,
+            category: food.strCategory,
+            price: price
+        };
+
+        Arr.push(foodObj);
+        
+
+        
+    })
+    console.log(Arr);
+    localStorage.setItem("foodArr",JSON.stringify(Arr));
+
+    
+
+    let showResult = (foodItems) =>{
+        foodItems.map((foodItem)=>{
+            console.log(foodItem);
+
+            let div = document.createElement("div");
+            div.setAttribute("class","latestFood_container-item")
+        
+            let name = document.createElement("h3");
+            name.innerHTML = foodItem.name;
+
+            let image = document.createElement("img");
+            image.setAttribute("src",foodItem.image);
+
+            let category = document.createElement("h5");
+            category.innerHTML = "Category " + foodItem.category;
+
+            let price = document.createElement("p");
+            price.innerHTML = "Price " + foodItem.price;
+
+            div.append(image,name,price,category);
+
+            document.querySelector(".latestFood_container").append(div);
+        })
+    }
+
+    showResult(Arr);
+    
+</script>

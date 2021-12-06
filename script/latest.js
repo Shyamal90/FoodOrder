@@ -1,7 +1,6 @@
 async function getData(url){
-
     let response = await fetch(url);
-    let data     =  response.json();
+    let data     = await response.json();
 
     return data;
 }
